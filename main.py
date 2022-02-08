@@ -1,15 +1,9 @@
 import random
 import functions
 from termcolor import colored
-
 functions.besHarfTxtOlustur()
-wordle_kelime = "çapak"
-olmayan_harfler = []
 # 0 yok 1 doğru yerde 2 yanlış yerde
-
-kelimen = random.choice(open('5harfkelimeler.txt',encoding="utf8").read().splitlines())
-count = 0
-
+"""
 while kelimen!=wordle_kelime:
     count += 1
     for i in range(0,len(kelimen)):
@@ -24,15 +18,22 @@ while kelimen!=wordle_kelime:
                 functions.dogruYerdeDegil(kelimen[i],i)
 
     kelimen = random.choice(open('5harfkelimeler.txt', encoding="utf8").read().splitlines())
-var = {
+"""
+dogruluk = ""
+kelimen = random.choice(open('5harfkelimeler.txt',encoding="utf8").read().splitlines())
+print(kelimen)
+while dogruluk != '11111':
+    dogruluk = str(input('dogruluk giriniz'))
+    if len(dogruluk) == 5:
+        for i in range(0,5):
+            if dogruluk[i] == '0':
+                functions.harfYok(kelimen[i])
+            elif dogruluk[i] == '1':
+                functions.dogruYerde(kelimen[i],i)
+            elif dogruluk[i] == '2':
+                functions.dogruYerdeDegil(kelimen[i],i)
+    kelimen = random.choice(open('5harfkelimeler.txt', encoding="utf8").read().splitlines())
+    print(kelimen)
 
-}
-for a in var:
-    if var.get(a) == 0:
-        functions.harfYok(a)
-    elif var.get(a) == 1:
-        functions.dogruYerde(kelimen[i], i)
-
-print(count)
 print(colored(kelimen,"green"))
 
